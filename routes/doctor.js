@@ -25,11 +25,11 @@ router.post("/doctor", async(req, res) => {
     }
 });
 
-router.get("/try", (req,res) => {
+router.get("/doctor/test", (req,res) => {
     res.send("The doctor side working correctly")
 });
 
-module.exports = doctor;
+module.exports = router;
 
 
 

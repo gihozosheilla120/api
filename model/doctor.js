@@ -3,30 +3,30 @@ const mongoose = require("mongoose");
 const doctorschema = new mongoose.Schema({
     name:{
         type: String,
-        required: True
+        required: true
     },
 
     workerId:{
         type: Number,
-        required: True,
-        Unique: True
+        required: true,
+        unique: true
     },
 
     workerPassword:{
         type: String,
-        required: True,
-        Unique: True,
+        required: true,
+        unique: true,
         minlength: 6
     },
     department:{
         type: String,
-        required: True,
+        required: true,
     },
 
     email:{
         type: String,
-        required: True,
-        Unique: True
+        required: true,
+        unique: true
     },
     
 });

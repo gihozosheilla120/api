@@ -16,19 +16,19 @@ const nurseschema = new mongoose.Schema({
     workerId:{
         type: String,
         required: true,
-        Unique: true
+        unique: true
     },
 
     workerPassword:{
         type: String,
         required: true,
-        Unique: true
+        unique: true
     },
     
     email:{
         type:String,
         required:true,
-        Unique: true
+        unique: true
     }
 
 });

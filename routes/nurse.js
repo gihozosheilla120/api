@@ -22,6 +22,8 @@ router.post("/nurse", async(req, res) => {
     }
 });
 
-router.get("/nn", (req,res) => {
+router.get("/nurse/test", (req,res) => {
     res.send("the nurse part is working perfectly!")
 });
+
+module.exports = router;

@@ -19,8 +19,8 @@ try{
  }
 });
 
-router.get("/get", (req,res) => {
+router.get("/patient/test", (req,res) => {
     res.send("your patient side is working perfectly")
 });
 
-module.exports = patient;
+module.exports = router;

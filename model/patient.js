@@ -8,7 +8,7 @@ const patientscheme = new mongoose.Schema({
 
     gender:{
         type:"string",
-        required: True
+        required: true
     },
 
     age:{
@@ -18,14 +18,14 @@ const patientscheme = new mongoose.Schema({
 
     number:{
         type: Number,
-        required: True,
-        Unique: True
+        required: true,
+        unique: true
     },
 
     email:{
         type:"string",
-        Unique: True,
-        required: True
+        unique: true,
+        required: true
     }
 
 });
