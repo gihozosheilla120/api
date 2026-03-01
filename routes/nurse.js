@@ -18,7 +18,7 @@ router.post("/nurse", async(req, res) => {
         res.status(201).json("Nurse saved successfully!")
     }
     catch(error){
-        res.status(500).json("Server issue")
+        res.status(500).json("Nurse not saved well")
     }
 });
 

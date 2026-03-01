@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const nurseschema = new mongoose.Schema({
     name:{
@@ -32,5 +33,14 @@ const nurseschema = new mongoose.Schema({
     }
 
 });
+
+nurseschema.pre("save", async function(next){
+    if(!this.isModified("workerPassword"))
+      return  next();
+    
+    const salt = await bcrypt.genSalt(10);
+    this.workerPassword = await bcrypt.hash(this.workerPassword,salt);
+    next();
+})
 
 module.exports = new mongoose.model("nurse", nurseschema);

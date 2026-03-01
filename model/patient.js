@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
-
+const bcrypt = require("bcrypt");
 const patientscheme = new mongoose.Schema({
     name:{
-        type:"string",
+        type: String,
         required: true
     },
 
     gender:{
-        type:"string",
+        type: String,
         required: true
     },
 
@@ -23,12 +23,13 @@ const patientscheme = new mongoose.Schema({
     },
 
     email:{
-        type:"string",
+        type: String,
         unique: true,
         required: true
     }
 
 });
+
 
 const patient = new mongoose.model("Patient", patientscheme);
 

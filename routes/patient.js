@@ -15,7 +15,7 @@ try{
     res.status(201).json("Patient saved successfully!")
 }
  catch(error){
-    res.status(500).json("Server issue")
+    res.status(500).json("patient not saved well")
  }
 });
 
