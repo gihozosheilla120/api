@@ -1,10 +1,38 @@
 const mongoose = require("mongoose");
 
 const express = require("express");
+const bcrypt= require("bcrypt");
+const jwt= require("jsonwebtoken");
+const verifyToken= require("../middleware/auth");
 
 const Nurse = require("../model/nurse");
 
 const router = express.Router();
+
+
+router.post("./nurse/login", async(req,res) => {
+    try{
+        const {workerId, workerPassword} = req.body;
+
+        const nurse = await Nurse.findOne({workerID});
+        if(!nurse) return res.status(403).json({message:"the nurse was not found"});
+
+        const isMatch = await bcrypt.compare(workerPassword, nurse.workerPassword);
+        if(!isMatch)return res.status(403).json({message:"invalid credentials"});
+
+        const token = (
+            {id:nurse._id, workerPassword:nurse.workerPassword, workerId:nurse.workerID},
+            process.env.JWT_SECRET,
+            {expiresIn:"1h"}
+        );
+    }
+    catch(error){
+        console.error(error);
+        res.status(500).json({message:"invalid information"});
+        
+    }
+}
+);
 
 router.post("/nurse", async(req, res) => {
     try{
@@ -22,8 +50,8 @@ router.post("/nurse", async(req, res) => {
     }
 });
 
-router.get("/nurse/test", (req,res) => {
-    res.send("the nurse part is working perfectly!")
+router.get("/nurse/test", verifyToken, (req,res) => {
+    res.send(`hello ${req.user.name}, you are logged in successfully`)
 });
 
 module.exports = router;
