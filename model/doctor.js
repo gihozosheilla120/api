@@ -5,7 +5,11 @@ const bcrypt = require("bcrypt");
 const doctorschema = new mongoose.Schema({
     name:{
         type: String,
-        required: true
+        required: true,
+        maxlength:50,
+        trim:true,
+        minlength:2,
+        match:/^[A-Za-z\s]+$/
     },
 
     workerId:{

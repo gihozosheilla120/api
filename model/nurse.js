@@ -5,8 +5,10 @@ const nurseschema = new mongoose.Schema({
     name:{
         type:String,
         required: true,
-        maxlength:30,
-
+        maxlength:50,
+        trim:true,
+        minlength:2,
+         match: /^[A-Za-z\s]+$/
     },
     gender:{
         type: String,

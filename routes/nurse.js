@@ -46,8 +46,10 @@ router.post("/nurse", async(req, res) => {
         res.status(201).json("Nurse saved successfully!")
     }
     catch(error){
-        res.status(500).json("Nurse not saved well")
-    }
+    console.error(error);
+    res.status(500).json({ message: error.message });
+}
+
 });
 
 router.get("/nurse/test", verifyToken, (req,res) => {
