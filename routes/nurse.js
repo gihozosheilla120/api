@@ -20,7 +20,7 @@ router.post("/nurse/login", async(req,res) => {
         const isMatch = await bcrypt.compare(workerPassword, nurse.workerPassword);
         if(!isMatch)return res.status(403).json({message:"invalid credentials"});
 
-        const token = (
+        const token = jwt.sign(
             {id:nurse._id, workerPassword:nurse.workerPassword, workerId:nurse.workerID},
             process.env.JWT_SECRET,
             {expiresIn:"1h"}

@@ -5,8 +5,8 @@ const nurseschema = new mongoose.Schema({
     name:{
         type:String,
         required: true,
-        maxlength:15,
-        minlength:6
+        maxlength:30,
+
     },
     gender:{
         type: String,
@@ -23,13 +23,13 @@ const nurseschema = new mongoose.Schema({
     workerPassword:{
         type: String,
         required: true,
-        unique: true
+
     },
     
     email:{
         type:String,
         required:true,
-        unique: true
+        
     }
 
 });
